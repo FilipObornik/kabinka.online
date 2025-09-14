@@ -1,0 +1,122 @@
+{
+  "extension": {
+    "name": "Kabinka - zkoušení oblečení na klik",
+    "description": "Virtual clothes try-on using AI for e-commerce sites"
+  },
+  "popup": {
+    "title": "Kabinka",
+    "subtitle": "Vyzkoušej oblečení na klik – z pohodlí domova.",
+    "motto": "Najdeš. Klikneš. Zkusíš.",
+    "setup": {
+      "title": "Nastavení",
+      "apiKey": {
+        "label": "Gemini API klíč",
+        "placeholder": "Vlož svůj Gemini API klíč",
+        "help": "Získej si klíč zdarma na <a href=\"https://makersuite.google.com/app/apikey\" target=\"_blank\">Google AI Studio</a>",
+        "statusNotSet": "Nenastaveno",
+        "statusSet": "Nastaveno"
+      },
+      "photo": {
+        "label": "Tvoja fotka",
+        "placeholder": "Nahraj svou fotku (JPG/PNG)",
+        "hint": "Klikni nebo přetáhni obrázek",
+        "help": "Fotka se ukládá pouze lokálně v tvém prohlížeči",
+        "statusNotSet": "Nenastaveno",
+        "statusSet": "Nastaveno"
+      },
+      "language": {
+        "label": "Jazyk",
+        "help": "Jazyk rozhraní rozšíření"
+      },
+      "saveButton": "Uložit nastavení"
+    },
+    "ready": {
+      "title": "Vše je připraveno!",
+      "description": "Můžeš nyní používat funkci try-on na podporovaných stránkách.",
+      "supportedSites": "Podporované stránky:",
+      "testButton": "Otevřít podporované stránky",
+      "editButton": "Upravit nastavení"
+    },
+    "stats": {
+      "title": "Statistiky použití",
+      "totalTryons": "Celkem vyzkoušeno",
+      "clearCache": "Vymazat cache"
+    },
+    "footer": {
+      "version": "Verze 1.0",
+      "help": "Nápověda",
+      "video": "Videonávod",
+      "privacy": "Soukromí"
+    }
+  },
+  "tryon": {
+    "button": "Vyzkoušet",
+    "modal": {
+      "title": "Vyzkoušení oblečení",
+      "loading": {
+        "progress": "AI vytváří tvůj nový look... 🤯",
+        "texts": [
+          "Zkouším ti nové oblečení z eshopu... 👔",
+          "Kombinuju tvůj styl s výběrem z katalogu... 🛍️",
+          "Zkouším, jak ti budou slušet tyhle kousky... ✨",
+          "Virtuálně ti oblékám nový outfit... 👗",
+          "Hledám perfektní velikost pro tebe... 📏",
+          "Připravuju ti virtuální zrcadlo... 🪞",
+          "Ladím detaily pro perfektní vzhled... 💅",
+          "Vytvářím tvou osobní fashion show... ✨",
+          "Skoro hotovo, finalizujem tvůj nový look... 🎯",
+          "Posledních pár úprav a bude to dokonalé... 🏁",
+          "Připravujem překvapení pro tvé oči... 👀"
+        ],
+        "complete": "Hotovo! Připravujem tvou novou image... 🎉"
+      },
+      "labels": {
+        "you": "Ty",
+        "yourNewLook": "Tvůj nový look",
+        "product": "Produkt",
+        "yourOriginalPhoto": "Ty"
+      },
+      "buttons": {
+        "regenerate": "Vygenerovat znovu",
+        "retry": "Zkusit znovu",
+        "close": "×"
+      }
+    },
+    "gallery": {
+      "download": "Stáhnout {{label}}",
+      "counter": "{{current}} / {{total}}",
+      "labels": {
+        "yourOriginalPhoto": "Tvoje původní fotka",
+        "yourNewLook": "Tvůj nový look s AI",
+        "originalProduct": "Původní produkt"
+      }
+    }
+  },
+  "messages": {
+    "errors": {
+      "invalidFile": "Prosím nahraj pouze obrázky (JPG, PNG)",
+      "fileTooLarge": "Obrázek je příliš velký. Maximum je 10MB.",
+      "saveFailed": "Chyba při ukládání: {{error}}",
+      "clearCacheFailed": "Chyba při mazání cache: {{error}}"
+    },
+    "success": {
+      "settingsSaved": "Nastavení uloženo!",
+      "cacheEmpty": "Cache je již prázdná",
+      "cacheCleared": "Vymazáno {{count}} položek z cache"
+    },
+    "help": {
+      "title": "Jak používat rozšíření:",
+      "content": "\\n1. Nastav si Gemini API klíč z Google AI Studio\\n2. Nahraj svou fotku (bude uložena pouze lokálně)\\n3. Jdi na Zalando.cz a na produktových fotkách uvidíš tlačítko \"Vyzkoušet si\"\\n4. Kliknutím se spustí AI generování - počkaj chvilku na výsledek\\n5. Výsledky se ukládají do cache, takže stejné produkty se načtou rychleji\\n\\nTipy:\\n- Fotka by měla být čistá, dobře osvětlená\\n- Nejlépe v pozadí bez rušivých prvků\\n- Kvalita výsledku závisí na kvalitě vstupních fotek\\n\\nPři problémech zkus:\\n- Překontrolovat API klíč\\n- Vymazat cache\\n- Aktualizovat stránku"
+    },
+    "privacy": {
+      "title": "Ochrana soukromí:",
+      "content": "\\n✅ Tvá fotka se ukládá POUZE v tvém prohlížeči\\n✅ API klíč je uložen lokálně, nikam se neodesílá\\n✅ Komunikujeme pouze s Google Gemini API\\n✅ Žádná data nesbíráme ani neukládáme na našich serverech\\n\\nCo se odesílá do Gemini API:\\n- Fotka produktu ze stránky\\n- Tvá fotka (pouze pro generování výsledku)\\n- Nic se trvale neukládá v cloudu\\n\\nLze kdykoli:\\n- Vymazat všechna uložená data z rozšíření\\n- Odinstalovat rozšíření = vše se smaže"
+    }
+  },
+  "branding": {
+    "website": "kabinka.online",
+    "createdBy": "Vytvořil",
+    "author": "Filip Oborník",
+    "company": "aisrozumem.cz"
+  }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cs" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="extension.name">Kabinka - zkoušení oblečení na klik</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="../utils/i18n.js"></script>
+</head>
+<body>
+    <div class="popup-container">
+        <header class="popup-header">
+            <h1>👗 <span data-i18n="popup.title">Kabinka</span></h1>
+            <p class="subtitle" data-i18n="popup.subtitle">Vyzkoušej oblečení na klik – z pohodlí domova.</p>
+            <p class="moto" data-i18n="popup.motto">Najdeš. Klikneš. Zkusíš.</p>
+        </header>
+
+        <main class="popup-main">
+            <div id="setup-section" class="section">
+                <h2>🔧 <span data-i18n="popup.setup.title">Nastavení</span></h2>
+                
+                <!-- API Key Section -->
+                <div class="input-group">
+                    <label for="api-key" data-i18n="popup.setup.apiKey.label">Gemini API klíč</label>
+                    <input type="password" id="api-key" data-i18n-placeholder="popup.setup.apiKey.placeholder" placeholder="Vlož svůj Gemini API klíč">
+                    <small class="help-text" data-i18n-html="popup.setup.apiKey.help">
+                        Získej si klíč zdarma na 
+                        <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>
+                    </small>
+                    <div class="status-indicator" id="api-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text" data-i18n="popup.setup.apiKey.statusNotSet">Nenastaveno</span>
+                    </div>
+                </div>
+
+                <!-- Photo Upload Section -->
+                <div class="input-group">
+                    <label for="user-photo" data-i18n="popup.setup.photo.label">Tvoja fotka</label>
+                    <div class="photo-upload-area" id="photo-upload">
+                        <div class="upload-placeholder">
+                            <div class="upload-icon">📷</div>
+                            <p data-i18n="popup.setup.photo.placeholder">Nahraj svou fotku (JPG/PNG)</p>
+                            <p class="upload-hint" data-i18n="popup.setup.photo.hint">Klikni nebo přetáhni obrázek</p>
+                        </div>
+                        <input type="file" id="user-photo" accept="image/*" hidden>
+                        <img id="photo-preview" class="photo-preview" style="display: none;">
+                    </div>
+                    <small class="help-text" data-i18n="popup.setup.photo.help">
+                        Fotka se ukládá pouze lokálně v tvém prohlížeči
+                    </small>
+                    <div class="status-indicator" id="photo-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text" data-i18n="popup.setup.photo.statusNotSet">Nenastaveno</span>
+                    </div>
+                </div>
+
+                <!-- Language Selector -->
+                <div class="input-group">
+                    <label for="language-select" data-i18n="popup.setup.language.label">Jazyk</label>
+                    <select id="language-select" class="language-selector">
+                        <option value="cs">Čeština</option>
+                        <option value="en">English</option>
+                    </select>
+                    <small class="help-text" data-i18n="popup.setup.language.help">
+                        Jazyk rozhraní rozšíření
+                    </small>
+                </div>
+
+                <button id="save-settings" class="btn-primary" disabled data-i18n="popup.setup.saveButton">
+                    Uložit nastavení
+                </button>
+            </div>
+
+            <div id="ready-section" class="section" style="display: none;">
+                <div class="success-message">
+                    <div class="success-icon">✅</div>
+                    <h2 data-i18n="popup.ready.title">Vše je připraveno!</h2>
+                    <p data-i18n="popup.ready.description">Můžeš nyní používat funkci try-on na podporovaných stránkách.</p>
+                    
+                    <div class="supported-sites">
+                        <h3 data-i18n="popup.ready.supportedSites">Podporované stránky:</h3>
+                        <ul>
+                            <li>🛍️ <a href="https://www.zalando.cz" target="_blank">Zalando.cz</a></li>
+                            <li>👗 <a href="https://www.aboutyou.cz" target="_blank">AboutYou.cz</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="test-extension" class="btn-secondary" data-i18n="popup.ready.testButton">
+                        Otevřít podporované stránky
+                    </button>
+                    <button id="edit-settings" class="btn-outline" data-i18n="popup.ready.editButton">
+                        Upravit nastavení
+                    </button>
+                </div>
+            </div>
+
+            <div id="usage-stats" class="section" style="display: none;">
+                <h3>📊 <span data-i18n="popup.stats.title">Statistiky použití</span></h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-tryons">0</span>
+                        <span class="stat-label" data-i18n="popup.stats.totalTryons">Celkem vyzkoušeno</span>
+                    </div>
+                </div>
+                <button id="clear-cache" class="btn-outline" data-i18n="popup.stats.clearCache">
+                    Vymazat cache
+                </button>
+            </div>
+        </main>
+
+        <footer class="popup-footer">
+            <div class="version" data-i18n="popup.footer.version">Verze 1.0</div>
+            <div class="links">
+                <a href="#" id="help-link" data-i18n="popup.footer.help">Nápověda</a>
+                <a href="#" id="video-link" data-i18n="popup.footer.video">Videonávod</a>
+                <a href="#" id="privacy-link" data-i18n="popup.footer.privacy">Soukromí</a>
+            </div>
+        </footer>
+        
+        <!-- Octopus Branding Footer -->
+        <div class="octopus-footer">
+            <div class="octopus-branding">
+                <img src="../octopus_piece_optimized.png" alt="Octopus" class="octopus-logo">
+                <div class="branding-text">
+                    <p>🧥 <a href="https://kabinka.online" target="_blank" data-i18n="branding.website">kabinka.online</a></p>
+                    <p><span data-i18n="branding.createdBy">Vytvořil</span> <a href="https://filipobornik.cz" target="_blank" data-i18n="branding.author">Filip Oborník</a> z <a href="https://aisrozumem.cz" target="_blank" data-i18n="branding.company">aisrozumem.cz</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

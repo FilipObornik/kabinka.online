@@ -1,0 +1,74 @@
+{
+  "manifest_version": 3,
+  "name": "Kabinka - Virtual Clothes Try-On",
+  "version": "1.0",
+  "description": "Virtual clothes try-on using AI for e-commerce sites",
+  
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*",
+    "https://cdn.aboutstatic.com/*",
+    "https://aboutstatic.com/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.zalando.cz/*", "*://*.zalando.de/*", "*://*.zalando.com/*",
+        "*://*.zalando.co.uk/*", "*://*.zalando.fr/*", "*://*.zalando.it/*",
+        "*://*.zalando.es/*", "*://*.zalando.pl/*", "*://*.zalando.nl/*",
+        "*://*.zalando.be/*", "*://*.zalando.at/*", "*://*.zalando.ch/*"
+      ],
+      "js": [
+        "utils/i18n.js",
+        "content-scripts/base/BaseTryOnConnector.js",
+        "content-scripts/base/ModalManager.js",
+        "content-scripts/zalando.js"
+      ],
+      "css": ["styles/content.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.aboutyou.com/*", "*://*.aboutyou.de/*", "*://*.aboutyou.at/*",
+        "*://*.aboutyou.ch/*", "*://*.aboutyou.nl/*", "*://*.aboutyou.be/*",
+        "*://*.aboutyou.pl/*", "*://*.aboutyou.cz/*"
+      ],
+      "js": [
+        "utils/i18n.js",
+        "content-scripts/base/BaseTryOnConnector.js", 
+        "content-scripts/base/ModalManager.js",
+        "content-scripts/aboutyou.js"
+      ],
+      "css": ["styles/content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Kabinka - Virtual Clothes Try-On"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*", 
+        "styles/*",
+        "content-scripts/base/*",
+        "utils/*",
+        "locales/*",
+        "octopus_piece_optimized.png"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

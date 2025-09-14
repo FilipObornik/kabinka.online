@@ -1,0 +1,28 @@
+I want to show how this person looks wearing a {PRODUCT_CLOTHES} in {PRODUCT_COLOR} color. 
+
+Analyze the person in the photo and identify which piece of clothing should be replaced to make this try-on realistic. Return the type and color of the clothing item that would make sense to replace.
+
+For example:
+- If trying on a jacket, identify the person's current jacket/outerwear
+- If trying on a shirt, identify the person's current shirt/top
+- If trying on shoes, identify the person's current footwear
+
+Describe the clothing to replace like this:
+{
+  "clothes": "<<ADD>>",
+  "color": "<<ADD>>"
+}
+
+Examples:
+{
+  "clothes": "shirt",
+  "color": "blue"
+}
+{
+  "clothes": "jacket", 
+  "color": "black"
+}
+{
+  "clothes": "shoes",
+  "color": "white"
+}

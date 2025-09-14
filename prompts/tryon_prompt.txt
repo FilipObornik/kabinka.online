@@ -1,0 +1,5 @@
+Create a new image by combining the elements from the provided images.
+
+Take the [clothes to insert] and place it instead of the [clothes to replace].
+
+The final image should be same person in the same environment and lighting with [scene change description]

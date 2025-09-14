@@ -1,0 +1,19 @@
+Analyze provided image and find the the main piece of clothes in the image. User has taken the photo with the goal to see how he will look in that piece of clothes. Describe that piece of clothes like this:
+{
+   "clothes": "<<ADD>>",
+   "color": "<<ADD>>"
+}
+
+Examples
+{
+   "clothes": "shirt",
+   "color": "white"
+}
+{
+   "clothes": "jacket",
+   "color": "red"
+}
+{
+   "clothes": "shoes",
+   "color": "blue"
+}

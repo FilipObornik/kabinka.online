@@ -1,0 +1,122 @@
+{
+  "extension": {
+    "name": "Kabinka - Virtual Clothes Try-On",
+    "description": "Virtual clothes try-on using AI for e-commerce sites"
+  },
+  "popup": {
+    "title": "Kabinka",
+    "subtitle": "Try on clothes with a click – from the comfort of home.",
+    "motto": "Find. Click. Try.",
+    "setup": {
+      "title": "Setup",
+      "apiKey": {
+        "label": "Gemini API Key",
+        "placeholder": "Enter your Gemini API key",
+        "help": "Get a free key at <a href=\"https://makersuite.google.com/app/apikey\" target=\"_blank\">Google AI Studio</a>",
+        "statusNotSet": "Not set",
+        "statusSet": "Configured"
+      },
+      "photo": {
+        "label": "Your Photo",
+        "placeholder": "Upload your photo (JPG/PNG)",
+        "hint": "Click or drag image here",
+        "help": "Photo is stored locally in your browser only",
+        "statusNotSet": "Not set",
+        "statusSet": "Configured"
+      },
+      "language": {
+        "label": "Language",
+        "help": "Extension interface language"
+      },
+      "saveButton": "Save Settings"
+    },
+    "ready": {
+      "title": "All set!",
+      "description": "You can now use the try-on feature on supported sites.",
+      "supportedSites": "Supported sites:",
+      "testButton": "Open supported sites",
+      "editButton": "Edit settings"
+    },
+    "stats": {
+      "title": "Usage Statistics",
+      "totalTryons": "Total try-ons",
+      "clearCache": "Clear cache"
+    },
+    "footer": {
+      "version": "Version 1.0",
+      "help": "Help",
+      "video": "Video Tutorial",
+      "privacy": "Privacy"
+    }
+  },
+  "tryon": {
+    "button": "Try On",
+    "modal": {
+      "title": "Clothes Try-On",
+      "loading": {
+        "progress": "AI is creating your new look... 🤯",
+        "texts": [
+          "Trying on new clothes from the store... 👔",
+          "Combining your style with catalog selection... 🛍️",
+          "Seeing how these pieces look on you... ✨",
+          "Virtually dressing you in new outfit... 👗",
+          "Finding the perfect size for you... 📏",
+          "Preparing your virtual mirror... 🪞",
+          "Fine-tuning details for perfect look... 💅",
+          "Creating your personal fashion show... ✨",
+          "Almost done, finalizing your new look... 🎯",
+          "Last few touches to make it perfect... 🏁",
+          "Preparing a surprise for your eyes... 👀"
+        ],
+        "complete": "Done! Preparing your new image... 🎉"
+      },
+      "labels": {
+        "you": "You",
+        "yourNewLook": "Your new look",
+        "product": "Product",
+        "yourOriginalPhoto": "You"
+      },
+      "buttons": {
+        "regenerate": "Generate again",
+        "retry": "Try again",
+        "close": "×"
+      }
+    },
+    "gallery": {
+      "download": "Download {{label}}",
+      "counter": "{{current}} / {{total}}",
+      "labels": {
+        "yourOriginalPhoto": "Your original photo",
+        "yourNewLook": "Your new look with AI",
+        "originalProduct": "Original product"
+      }
+    }
+  },
+  "messages": {
+    "errors": {
+      "invalidFile": "Please upload only images (JPG, PNG)",
+      "fileTooLarge": "Image is too large. Maximum is 10MB.",
+      "saveFailed": "Save error: {{error}}",
+      "clearCacheFailed": "Cache clear error: {{error}}"
+    },
+    "success": {
+      "settingsSaved": "Settings saved!",
+      "cacheEmpty": "Cache is already empty",
+      "cacheCleared": "Cleared {{count}} cache items"
+    },
+    "help": {
+      "title": "How to use the extension:",
+      "content": "\\n1. Set up your Gemini API key from Google AI Studio\\n2. Upload your photo (stored locally only)\\n3. Go to Zalando.cz and you'll see \"Try On\" buttons on product images\\n4. Click to start AI generation - wait for the result\\n5. Results are cached, so same products load faster\\n\\nTips:\\n- Photo should be clear, well-lit\\n- Preferably plain background without distractions\\n- Result quality depends on input photo quality\\n\\nIf problems occur:\\n- Check your API key\\n- Clear cache\\n- Refresh the page"
+    },
+    "privacy": {
+      "title": "Privacy Protection:",
+      "content": "\\n✅ Your photo is stored ONLY in your browser\\n✅ API key is stored locally, never sent elsewhere\\n✅ We only communicate with Google Gemini API\\n✅ We don't collect or store any data on our servers\\n\\nWhat's sent to Gemini API:\\n- Product photo from the website\\n- Your photo (only for generating result)\\n- Nothing is permanently stored in the cloud\\n\\nYou can always:\\n- Clear all stored extension data\\n- Uninstall extension = everything gets deleted"
+    }
+  },
+  "branding": {
+    "website": "kabinka.online",
+    "createdBy": "Created by",
+    "author": "Filip Oborník",
+    "company": "aisrozumem.cz"
+  }
+}
