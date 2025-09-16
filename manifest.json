@@ -53,9 +53,20 @@
     "service_worker": "background/service-worker.js"
   },
   
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png", 
+    "128": "logo.png"
+  },
+
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "Kabinka - Virtual Clothes Try-On"
+    "default_title": "Kabinka - Virtual Clothes Try-On",
+    "default_icon": {
+      "16": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
   },
   
   "web_accessible_resources": [
