@@ -2,7 +2,9 @@
 
 Virtual clothes try-on using Google Gemini AI for e-commerce sites.
 
-Learn more on kabinka.online
+Learn more on [kabinka.online](https://kabinka.online)
+
+> The entire app was **vibe coded** with Claude Code. If the concept makes users interested, the code will be refactored to support further development
 
 ## 🎯 Supported e-shops
 - [Zalando](https://zalando.com) - all countries
