@@ -1,7 +1,21 @@
 /* Try-on button styling */
 .tryon-button-wrapper {
   position: relative !important;
-  display: contents !important;
+  display: inline-block !important;
+  /* Ensure wrapper doesn't interfere with layout and maintains image size */
+  overflow: visible !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  box-sizing: border-box !important;
+  
+  /* Ensure wrapper doesn't add extra spacing */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  
+  /* Inherit dimensions from parent container */
+  width: fit-content !important;
+  height: fit-content !important;
 }
 
 .tryon-button {
@@ -21,6 +35,21 @@
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  
+  /* Critical: Prevent overflow by constraining to parent bounds */
+  max-width: calc(100% - 20px) !important;
+  max-height: calc(100% - 20px) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+  
+  /* Ensure button is contained within image bounds */
+  contain: layout style !important;
+  
+  /* Responsive sizing based on container */
+  min-width: fit-content !important;
+  min-height: 24px !important;
 }
 
 .tryon-button:hover {
@@ -555,6 +584,15 @@
     flex-direction: column !important;
     gap: 12px !important;
   }
+
+  /* Only reduce button size on small screens if container is also small */
+  .tryon-button:not([data-container-size="large"]) {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    top: 8px !important;
+    left: 8px !important;
+    max-width: calc(100% - 16px) !important;
+  }
   
   /* Responsive for new animated loading */
   .tryon-images-animation {
@@ -642,4 +680,127 @@
   .result-branding-text p {
     font-size: 9px !important;
   }
+}
+
+/* Additional responsive rules for very small screens - but only for small containers */
+@media (max-width: 480px) {
+  /* Only reduce size for actual small containers, not just small screens */
+  [class*="thumbnail"] .tryon-button,
+  [class*="carousel"] .tryon-button,
+  [data-testid*="thumbnail"] .tryon-button,
+  .tryon-button-wrapper:has(img[width="156"]) .tryon-button,
+  .tryon-button-wrapper:has(img[width="200"]) .tryon-button {
+    font-size: 9px !important;
+    padding: 2px 4px !important;
+    border-radius: 10px !important;
+    top: 4px !important;
+    left: 4px !important;
+    max-width: calc(100% - 8px) !important;
+  }
+  
+  /* Keep larger buttons for main images even on small screens */
+  [data-testid*="media-slider"] .tryon-button,
+  .tryon-button-wrapper:has(img[width="762"]) .tryon-button {
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+  }
+}
+
+/* Container-aware sizing using CSS container queries and target selectors */
+
+/* Large containers (main product images) - keep full size */
+.tryon-button-wrapper:has(img[width="762"]) .tryon-button,
+.tryon-button-wrapper:has(img[data-testid*="media-slider"]) .tryon-button,
+[data-testid*="media-slider"] .tryon-button,
+.tryon-button-wrapper[style*="width: 762px"] .tryon-button {
+  font-size: 16px !important;
+  padding: 10px 20px !important;
+  border-radius: 24px !important;
+  top: 12px !important;
+  left: 12px !important;
+  min-height: 32px !important;
+}
+
+/* Medium containers (around 300-500px) - slightly reduced */
+.tryon-button-wrapper:has(img[width="300"]) .tryon-button,
+.tryon-button-wrapper:has(img[width="400"]) .tryon-button,
+.tryon-button-wrapper:has(img[width="500"]) .tryon-button {
+  font-size: 14px !important;
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  top: 10px !important;
+  left: 10px !important;
+  min-height: 24px !important;
+}
+
+/* Small containers (thumbnails around 156-200px) - compact */
+[class*="thumbnail"] .tryon-button,
+[class*="carousel"] .tryon-button,
+.tryon-button-wrapper:has(img[width="156"]) .tryon-button,
+.tryon-button-wrapper:has(img[width="200"]) .tryon-button,
+[data-testid*="thumbnail"] .tryon-button {
+  font-size: 10px !important;
+  padding: 3px 6px !important;
+  border-radius: 12px !important;
+  top: 6px !important;
+  left: 6px !important;
+  max-width: calc(100% - 12px) !important;
+  max-height: calc(100% - 12px) !important;
+  min-height: 18px !important;
+}
+
+/* Very small containers (under 150px) - micro */
+.tryon-button-wrapper:has(img[width="100"]) .tryon-button,
+.tryon-button-wrapper:has(img[width="120"]) .tryon-button,
+img[width="100"] + .tryon-button,
+img[width="120"] + .tryon-button {
+  font-size: 8px !important;
+  padding: 2px 4px !important;
+  border-radius: 8px !important;
+  top: 4px !important;
+  left: 4px !important;
+  max-width: calc(100% - 8px) !important;
+  max-height: calc(100% - 8px) !important;
+  min-height: 14px !important;
+}
+
+/* Data-attribute based sizing (more precise than CSS selectors) */
+.tryon-button[data-container-size="large"] {
+  font-size: 16px !important;
+  padding: 10px 20px !important;
+  border-radius: 24px !important;
+  top: 12px !important;
+  left: 12px !important;
+  min-height: 32px !important;
+  max-width: calc(100% - 24px) !important;
+}
+
+.tryon-button[data-container-size="medium"] {
+  font-size: 14px !important;
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  top: 10px !important;
+  left: 10px !important;
+  min-height: 24px !important;
+  max-width: calc(100% - 20px) !important;
+}
+
+.tryon-button[data-container-size="small"] {
+  font-size: 11px !important;
+  padding: 4px 8px !important;
+  border-radius: 14px !important;
+  top: 6px !important;
+  left: 6px !important;
+  min-height: 20px !important;
+  max-width: calc(100% - 12px) !important;
+}
+
+.tryon-button[data-container-size="micro"] {
+  font-size: 9px !important;
+  padding: 2px 4px !important;
+  border-radius: 10px !important;
+  top: 4px !important;
+  left: 4px !important;
+  min-height: 16px !important;
+  max-width: calc(100% - 8px) !important;
 }

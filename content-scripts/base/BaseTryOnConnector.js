@@ -116,7 +116,40 @@ class BaseTryOnConnector {
     button.textContent = this.t('tryon.button');
     button.setAttribute('data-image-src', img.src);
     button.setAttribute('data-image-alt', img.alt || '');
+    
+    // Detect container size for responsive styling
+    this.setContainerSizeAttributes(button, img);
+    
     return button;
+  }
+  
+  setContainerSizeAttributes(button, img) {
+    // Get image dimensions
+    const imgWidth = img.naturalWidth || img.width || img.offsetWidth;
+    const imgHeight = img.naturalHeight || img.height || img.offsetHeight;
+    
+    // Get container dimensions
+    const container = this.findButtonContainer(img);
+    const containerWidth = container ? container.offsetWidth : imgWidth;
+    const containerHeight = container ? container.offsetHeight : imgHeight;
+    
+    // Determine size category based on available space
+    let sizeCategory = 'medium'; // default
+    
+    if (containerWidth >= 600 || imgWidth >= 600) {
+      sizeCategory = 'large';
+    } else if (containerWidth <= 200 || imgWidth <= 200) {
+      sizeCategory = 'small';
+    } else if (containerWidth <= 120 || imgWidth <= 120) {
+      sizeCategory = 'micro';
+    }
+    
+    // Set data attributes for CSS targeting
+    button.setAttribute('data-container-size', sizeCategory);
+    button.setAttribute('data-container-width', containerWidth);
+    button.setAttribute('data-image-width', imgWidth);
+    
+    console.log(`Button size category: ${sizeCategory} (container: ${containerWidth}px, image: ${imgWidth}px)`);
   }
 
   createButtonWrapper() {
