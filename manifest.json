@@ -6,8 +6,7 @@
   "default_locale": "en",
   
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
   
   "host_permissions": [
