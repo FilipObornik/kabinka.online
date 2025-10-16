@@ -10,5 +10,9 @@
   "actionTitle": {
     "message": "Kabinka - Najdeš. Klikneš. Zkusíš.",
     "description": "Kabinka  - Najdeš. Klikneš. Zkusíš."
+  },
+  "contextMenuTryOn": {
+    "message": "Vyzkoušet",
+    "description": "Položka kontextové nabídky pro vyzkoušení oblečení z jakéhokoli obrázku"
   }
 }

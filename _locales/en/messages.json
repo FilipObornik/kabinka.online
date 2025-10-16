@@ -10,5 +10,9 @@
   "actionTitle": {
     "message": "Kabinka - Find. Click. Try.",
     "description": "Kabinka - Find. Click. Try."
+  },
+  "contextMenuTryOn": {
+    "message": "Try On",
+    "description": "Context menu item to try on clothes from any image"
   }
 }

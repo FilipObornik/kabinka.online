@@ -6,7 +6,8 @@
   "default_locale": "en",
   
   "permissions": [
-    "storage"
+    "storage",
+    "contextMenus"
   ],
   
   "host_permissions": [
@@ -40,9 +41,19 @@
       ],
       "js": [
         "utils/i18n.js",
-        "content-scripts/base/BaseTryOnConnector.js", 
+        "content-scripts/base/BaseTryOnConnector.js",
         "content-scripts/base/ModalManager.js",
         "content-scripts/aboutyou.js"
+      ],
+      "css": ["styles/content.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "utils/i18n.js",
+        "content-scripts/base/ModalManager.js",
+        "content-scripts/universal-tryon.js"
       ],
       "css": ["styles/content.css"],
       "run_at": "document_end"

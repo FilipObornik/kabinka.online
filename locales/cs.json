@@ -12,7 +12,7 @@
       "apiKey": {
         "label": "Gemini API klíč",
         "placeholder": "Vlož svůj Gemini API klíč",
-        "help": "Získej si klíč zdarma na <a href=\"https://makersuite.google.com/app/apikey\" target=\"_blank\">Google AI Studio</a>",
+        "help": "Získej klíč na <a href=\"https://makersuite.google.com/app/apikey\" target=\"_blank\">Google AI Studio</a>",
         "statusNotSet": "Nenastaveno",
         "statusSet": "Nastaveno"
       },

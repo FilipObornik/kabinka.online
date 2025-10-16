@@ -659,7 +659,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // Extension installation handler
 chrome.runtime.onInstalled.addListener(() => {
   console.log('Clothes Try-On Extension installed');
-  
+
+  // Create context menu for images
+  chrome.contextMenus.create({
+    id: 'tryOnClothes',
+    title: chrome.i18n.getMessage('contextMenuTryOn'),
+    contexts: ['image']
+  });
+
   // Open setup page on first install
   chrome.storage.local.get(['firstRun'], result => {
     if (!result.firstRun) {
@@ -667,4 +674,23 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.tabs.create({ url: chrome.runtime.getURL('popup/popup.html') });
     }
   });
+});
+
+// Handle context menu clicks
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === 'tryOnClothes' && info.srcUrl) {
+    console.log('Context menu clicked for image:', info.srcUrl);
+
+    // Send message to content script to trigger try-on
+    chrome.tabs.sendMessage(tab.id, {
+      action: 'tryOnContextMenu',
+      imageSrc: info.srcUrl
+    }, response => {
+      if (chrome.runtime.lastError) {
+        console.error('Error sending message to content script:', chrome.runtime.lastError);
+      } else {
+        console.log('Try-on triggered successfully');
+      }
+    });
+  }
 });
